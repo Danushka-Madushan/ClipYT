@@ -70,7 +70,7 @@ try:
                     print("$ Status : %s.." % response['status'], end='\r')
                     if response['status'] == 'finished':
                         print('$ Clip : https://ytcutter.net%s' % response['watch'])
-                        print('$ Direct (%.2f MB) : https://ytcutter.net/stream/%s' % (int(requests.head('https://ytcutter.net/stream/30_0s_to_14_030_0s_When_Your_Girlfriend_Undresses.mp4').headers['Content-Length'])/1024/1024, response['filename']))
+                        print('$ Direct (%.2f MB) : https://ytcutter.net/stream/%s' % (int(requests.head('https://ytcutter.net/stream/%s' % response['filename']).headers['Content-Length'])/1024/1024, response['filename']))
                         _c_ = input('\n$ Wanna Download? (Y/N) : ').upper()
                         if _c_ == "Y":
                             download('https://ytcutter.net/stream/%s' % response['filename'], info['title'])
