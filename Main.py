@@ -3,13 +3,13 @@ from tqdm import tqdm
 import re
 
 def duration(sec):
-    _h_ = str(sec//3600).zfill(2)
-    _m_ = str((sec%3600)//60).zfill(2)
-    _s_ = str((sec%3600)%60).zfill(2)
-    if _h_ and _m_ == '00':
+    _h_ = str(sec//3600)
+    _m_ = str((sec%3600)//60)
+    _s_ = str((sec%3600)%60)
+    if _m_ == '0' and _h_ == '0':
         _time_ = ("%s Seconds" % (_s_))
         return _time_
-    elif _h_ == '00':
+    elif _h_ == '0':
         _time_ = ("%s Minutes %s Seconds" % (_m_, _s_))
         return _time_
     else:
@@ -83,3 +83,5 @@ except KeyboardInterrupt:
     print("\n$ KeyboardInterrupt Received!")
 except ValueError:
     print("\n$ Invalid input!")
+except requests.ConnectionError:
+    print("\n$ Connection Error!")
